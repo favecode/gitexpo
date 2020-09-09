@@ -9,7 +9,7 @@ export interface RouteType {
 const routes: RouteType[] = [
     {
         exact: true,
-        path: '/explore',
+        path: '/',
         component: Explore,
     },
 ]
