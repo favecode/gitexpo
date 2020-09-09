@@ -4,7 +4,7 @@ import { StyledHeader, StyledTitle, StyledDescription } from './StyledHeader'
 
 const Header: React.FC = () => {
     return (
-        <StyledHeader>
+        <StyledHeader className='flex flex-col justify-center items-center p-10'>
             <StyledTitle>{texts.explore.headerTitle}</StyledTitle>
             <StyledDescription>
                 {texts.explore.headerDescription}

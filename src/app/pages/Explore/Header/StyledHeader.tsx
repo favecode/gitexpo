@@ -1,12 +1,7 @@
 import styled from 'styled-components'
 
 export const StyledHeader = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     background: #fafbfc;
-    padding: 3rem 0;
     border-bottom: 1px solid #e1e4e8;
 `
 
@@ -23,4 +18,5 @@ export const StyledDescription = styled.p`
     font-size: 16px;
     line-height: 24px;
     color: #586069;
+    text-align: center;
 `
