@@ -11,3 +11,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.bg-gray-100 {
+  background-color: #f5f8fa;
+}

@@ -22389,6 +22389,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.bg-gray-100 {
+  background-color: #f5f8fa;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
@@ -109292,4 +109296,3 @@ body {
             animation: bounce 1s infinite;
   }
 }
-

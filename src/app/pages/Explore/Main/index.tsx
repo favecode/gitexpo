@@ -1,9 +1,15 @@
 import React from 'react'
-import { useQuery } from '@apollo/react-hooks'
-import api from 'app/api'
+import Filters from './Filters'
+import Items from './Items'
+import { StyledMain } from './StyledMain'
 
 const Main: React.FC = () => {
-    return <div>Main</div>
+    return (
+        <StyledMain className='max-w-4xl mx-auto rounded-lg mt-10 overflow-hidden'>
+            <Filters />
+            <Items />
+        </StyledMain>
+    )
 }
 
 export default Main
