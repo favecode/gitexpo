@@ -18,5 +18,6 @@ export const StyledDescription = styled.p`
     font-size: 16px;
     line-height: 24px;
     color: #586069;
+    font-weight: 500;
     text-align: center;
 `

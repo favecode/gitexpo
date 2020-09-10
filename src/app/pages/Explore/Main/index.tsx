@@ -5,7 +5,7 @@ import { StyledMain } from './StyledMain'
 
 const Main: React.FC = () => {
     return (
-        <StyledMain className='max-w-4xl mx-auto rounded-lg mt-10 overflow-hidden'>
+        <StyledMain className='max-w-4xl mx-auto rounded-lg mt-10'>
             <Filters />
             <Items />
         </StyledMain>
