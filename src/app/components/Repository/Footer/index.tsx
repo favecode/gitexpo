@@ -3,6 +3,7 @@ import { StyledFooter } from './StyledFooter'
 import Language from './Language'
 import Stars from './Stars'
 import Forks from './Forks'
+import Contributors, { ContributorType } from './Contributors'
 
 export interface Props {
     name: string
@@ -10,6 +11,7 @@ export interface Props {
     stargazers_count: number
     forks_count: number
     language: string
+    contributors: ContributorType[]
 }
 
 const Footer: React.FC<Props> = props => {
@@ -25,6 +27,7 @@ const Footer: React.FC<Props> = props => {
                 forks_count={props.stargazers_count}
                 html_url={props.html_url}
             />
+            <Contributors contributors={props.contributors} />
         </StyledFooter>
     )
 }

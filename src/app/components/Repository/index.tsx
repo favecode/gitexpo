@@ -2,6 +2,7 @@ import React from 'react'
 import Header from './Header'
 import Main from './Main'
 import Footer from './Footer'
+import { ContributorType } from './Footer/Contributors'
 
 export interface Props {
     name: string
@@ -13,6 +14,7 @@ export interface Props {
     stargazers_count: number
     forks_count: number
     language: string
+    contributors: ContributorType[]
 }
 
 const Repository: React.FC<Props> = props => {
@@ -30,6 +32,7 @@ const Repository: React.FC<Props> = props => {
                 stargazers_count={props.stargazers_count}
                 forks_count={props.forks_count}
                 language={props.language}
+                contributors={props.contributors}
             />
         </article>
     )

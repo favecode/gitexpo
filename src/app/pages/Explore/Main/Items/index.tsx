@@ -15,6 +15,18 @@ const Items: React.FC = () => {
             stargazers_count: 13277,
             forks_count: 420,
             language: 'Typescript',
+            contributors: [
+                {
+                    avatar_url:
+                        'https://avatars0.githubusercontent.com/u/853712?v=4',
+                    html_url: 'https://github.com/sebmck',
+                },
+                {
+                    avatar_url:
+                        'https://avatars3.githubusercontent.com/u/5262527?v=4',
+                    html_url: 'https://github.com/diokey',
+                },
+            ],
         },
     ]
     return (
