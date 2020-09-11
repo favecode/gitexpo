@@ -9,6 +9,7 @@ const Items: React.FC = () => {
             owner: {
                 login: 'romefrontend',
             },
+            html_url: 'https://github.com/romefrontend/rome',
             description:
                 'The Rome Frontend Toolchain. A linter, compiler, bundler, and more for JavaScript, TypeScript, HTML, Markdown, and CSS.',
             stargazers_count: 13277,

@@ -9,12 +9,15 @@ export interface Props {
     owner: {
         login: string
     }
+    html_url: string
 }
 
 const Header: React.FC<Props> = props => {
     return (
         <StyledHeader className='flex flex-row items-center justify-between'>
-            <StyledFullName className='inline-flex items-end cursor-pointer'>
+            <StyledFullName
+                href={`${props.html_url}`}
+                className='inline-flex items-end cursor-pointer'>
                 <ReactSVG
                     src={Reop}
                     wrapper='span'
