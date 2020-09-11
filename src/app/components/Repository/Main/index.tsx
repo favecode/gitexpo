@@ -7,7 +7,7 @@ export interface Props {
 
 const Main: React.FC<Props> = props => {
     return (
-        <StyledDescription className='mt-1'>
+        <StyledDescription className='my-1'>
             {props.description}
         </StyledDescription>
     )
