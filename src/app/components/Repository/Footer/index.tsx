@@ -26,7 +26,7 @@ const Footer: React.FC<Props> = props => {
             />
             <Forks
                 name={props.name}
-                forks_count={props.stargazers_count}
+                forks_count={props.forks_count}
                 html_url={props.html_url}
             />
             <Contributors contributors={props.contributors} />

@@ -32,13 +32,41 @@ export const StyledDropdownHeader = styled.div`
     font-size: 12px;
     font-weight: 600;
     border-bottom: 1px solid rgba(27, 31, 35, 0.15);
-    padding: 0.5rem;
+    padding: 8px 10px;
     box-sizing: border-box;
 `
 
 export const StyledDropdownBody = styled.div`
     font-size: 12px;
-    padding: 0.5rem;
     box-sizing: border-box;
     color: #586069;
+`
+
+export const StyledDropdownSearchBox = styled.div`
+    font-size: 12px;
+    padding: 8px 10px;
+    box-sizing: border-box;
+    color: #586069;
+    border-bottom: 1px solid #e9ecef;
+`
+
+export const StyledDropdownList = styled.div`
+    font-size: 12px;
+    max-height: 400px;
+    box-sizing: border-box;
+    color: #586069;
+`
+
+export const StyledDropdownListItem = styled.div`
+    font-size: 12px;
+    padding: 8px 8px 8px 30px;
+    box-sizing: border-box;
+    color: #586069;
+    &:hover {
+        background-color: #0465d6;
+        color: white;
+    }
+    &:not(:last-child) {
+        border-bottom: 1px solid #e9ecef;
+    }
 `
