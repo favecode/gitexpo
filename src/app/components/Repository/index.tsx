@@ -25,6 +25,7 @@ const Repository: React.FC<Props> = props => {
             />
             <Main description={props.description} />
             <Footer
+                html_url={props.html_url}
                 stargazers_count={props.stargazers_count}
                 forks_count={props.forks_count}
                 language={props.language}
