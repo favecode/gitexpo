@@ -4,11 +4,13 @@ import Language from './Language'
 import Stars from './Stars'
 import Forks from './Forks'
 import Contributors, { ContributorType } from './Contributors'
+import StarsByDate from './StarsByDate'
 
 export interface Props {
     name: string
     html_url: string
     stargazers_count: number
+    stargazers_by_date_count: number
     forks_count: number
     language: string
     contributors: ContributorType[]
@@ -28,6 +30,9 @@ const Footer: React.FC<Props> = props => {
                 html_url={props.html_url}
             />
             <Contributors contributors={props.contributors} />
+            <StarsByDate
+                stargazers_by_date_count={props.stargazers_by_date_count}
+            />
         </StyledFooter>
     )
 }

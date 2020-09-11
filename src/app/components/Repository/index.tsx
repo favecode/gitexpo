@@ -12,6 +12,7 @@ export interface Props {
     html_url: string
     description: string
     stargazers_count: number
+    stargazers_by_date_count: number
     forks_count: number
     language: string
     contributors: ContributorType[]
@@ -30,6 +31,7 @@ const Repository: React.FC<Props> = props => {
                 name={props.name}
                 html_url={props.html_url}
                 stargazers_count={props.stargazers_count}
+                stargazers_by_date_count={props.stargazers_by_date_count}
                 forks_count={props.forks_count}
                 language={props.language}
                 contributors={props.contributors}

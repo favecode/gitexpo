@@ -13,6 +13,7 @@ const Items: React.FC = () => {
             description:
                 'The Rome Frontend Toolchain. A linter, compiler, bundler, and more for JavaScript, TypeScript, HTML, Markdown, and CSS.',
             stargazers_count: 13277,
+            stargazers_by_date_count: 303,
             forks_count: 420,
             language: 'Typescript',
             contributors: [
