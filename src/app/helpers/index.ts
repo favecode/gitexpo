@@ -1,7 +1,7 @@
-import storage from './storage'
 import numberFormat from './numberFormat'
+import getLabel from './getLabel'
 
 export default {
-    storage,
     numberFormat,
+    getLabel,
 }

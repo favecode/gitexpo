@@ -58,13 +58,31 @@ export const StyledDropdownList = styled.div`
 `
 
 export const StyledDropdownListItem = styled.div`
-    font-size: 12px;
     padding: 8px 8px 8px 30px;
     box-sizing: border-box;
     color: #586069;
     &:hover {
         background-color: #0465d6;
         color: white;
+    }
+    &:hover svg {
+        fill: white !important;
+    }
+    &:not(:last-child) {
+        border-bottom: 1px solid #e9ecef;
+    }
+`
+export const StyledDropdownSelectedListItem = styled.div`
+    padding: 8px 10px;
+    font-weight: bold;
+    box-sizing: border-box;
+    color: #24292e;
+    &:hover {
+        background-color: #0465d6;
+        color: white;
+    }
+    &:hover svg {
+        fill: white !important;
     }
     &:not(:last-child) {
         border-bottom: 1px solid #e9ecef;

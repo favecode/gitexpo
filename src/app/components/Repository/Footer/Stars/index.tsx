@@ -1,7 +1,6 @@
 import React from 'react'
 import { StyledStars } from './StyledStars'
-import { ReactSVG } from 'react-svg'
-import Star from 'app/public/icons/star.svg'
+import Icon from 'app/components/Icon'
 import helpers from 'app/helpers'
 
 export interface Props {
@@ -14,15 +13,11 @@ const Stars: React.FC<Props> = props => {
         <StyledStars
             href={`${props.url}/stargazers`}
             className='inline-flex items-center mr-4 cursor-pointer'>
-            <ReactSVG
-                src={Star}
-                wrapper='span'
-                beforeInjection={(svg: SVGElement) => {
-                    svg.setAttribute(
-                        'style',
-                        'width: 16px;fill: #6a737d;margin-right:2px;display: inline;',
-                    )
-                }}
+            <Icon
+                icon='Star'
+                fill='#6a737d'
+                margin='0 2px 0 0'
+                display='inline'
             />
             <span>{helpers.numberFormat(props.stars)}</span>
         </StyledStars>

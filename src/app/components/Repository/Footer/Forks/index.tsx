@@ -1,7 +1,6 @@
 import React from 'react'
 import { StyledForks } from './StyledForks'
-import { ReactSVG } from 'react-svg'
-import Fork from 'app/public/icons/fork.svg'
+import Icon from 'app/components/Icon'
 import helpers from 'app/helpers'
 
 export interface Props {
@@ -15,15 +14,11 @@ const Forks: React.FC<Props> = props => {
         <StyledForks
             href={`${props.url}/network/members.${props.name}`}
             className='inline-flex items-center mr-4 cursor-pointer'>
-            <ReactSVG
-                src={Fork}
-                wrapper='span'
-                beforeInjection={(svg: SVGElement) => {
-                    svg.setAttribute(
-                        'style',
-                        'width: 16px;fill: #6a737d;margin-right:2px;display: inline;',
-                    )
-                }}
+            <Icon
+                icon='Fork'
+                fill='#6a737d'
+                margin='0 2px 0 0'
+                display='inline'
             />
             <span>{helpers.numberFormat(props.forks)}</span>
         </StyledForks>

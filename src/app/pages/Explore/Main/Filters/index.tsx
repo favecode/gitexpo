@@ -3,15 +3,24 @@ import Dropdown, { Props as DropdownTypes } from 'app/components/Dropdown'
 import { v4 as uuid } from 'uuid'
 import { StyledFilter } from './StyledFilter'
 import options from 'app/options'
+import * as ls from 'local-storage'
 
-const Filters: React.FC = () => {
+export interface FiltersType {
+    languages: string[]
+    spokenLanguages: string[]
+    since: string
+}
+
+const Type: React.FC = () => {
+    let filters: FiltersType = ls.get<FiltersType>('filters')
+
     const dropdowns: DropdownTypes[] = [
         {
             label: 'Spoken Language:',
             defaultLabel: 'Any',
             title: 'Select a spoken language',
             options: options.spokenLanguages,
-            selectedOptions: [],
+            selectedOptions: [...filters.spokenLanguages],
             select: true,
             selectPlaceHolder: 'Filter spoken languages',
         },
@@ -20,7 +29,7 @@ const Filters: React.FC = () => {
             defaultLabel: 'Any',
             title: 'Select a language',
             options: options.languages,
-            selectedOptions: [],
+            selectedOptions: [...filters.languages],
             select: true,
             selectPlaceHolder: 'Filter languages',
         },
@@ -29,7 +38,7 @@ const Filters: React.FC = () => {
             defaultLabel: 'Today',
             title: 'Adjust time span',
             options: options.dateRange,
-            selectedOptions: [],
+            selectedOptions: [filters.since],
             select: false,
             selectPlaceHolder: '',
         },
@@ -43,4 +52,4 @@ const Filters: React.FC = () => {
     )
 }
 
-export default Filters
+export default Type

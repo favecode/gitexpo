@@ -6,10 +6,13 @@ import {
     StyledDropdownBody,
     StyledDropdownList,
     StyledDropdownListItem,
+    StyledDropdownSelectedListItem,
     StyledDropdownSearchBox,
 } from './StyledDropdown'
 import { OptionType } from 'app/options/types'
 import { v4 as uuid } from 'uuid'
+import helpers from 'app/helpers'
+import Icon from 'app/components/Icon'
 import Select from 'react-select'
 
 export interface Props {
@@ -17,7 +20,7 @@ export interface Props {
     defaultLabel: string
     title: string
     options: OptionType[]
-    selectedOptions: OptionType[]
+    selectedOptions: string[]
     select: boolean
     selectPlaceHolder: string
 }
@@ -30,6 +33,14 @@ const Dropdown: React.FC<Props> = props => {
     const handleVisibleToggle: () => void = () =>
         setVisible((prevState: boolean) => !prevState)
 
+    const selectedOptions: OptionType[] = props.selectedOptions.map(
+        (item: string) => {
+            let result: OptionType[] = helpers.getLabel(props.options, item)
+
+            return result[0]
+        },
+    )
+
     return (
         <div className='px-3 relative'>
             <StyledDropdownLabel
@@ -37,8 +48,8 @@ const Dropdown: React.FC<Props> = props => {
                 className='cursor-pointer'>
                 {props.label}
                 <span className='font-bold px-1'>
-                    {props.selectedOptions.length > 1
-                        ? props.selectedOptions[0].label
+                    {props.selectedOptions.length > 0
+                        ? selectedOptions[0].label
                         : props.defaultLabel}
                 </span>
             </StyledDropdownLabel>
@@ -59,13 +70,30 @@ const Dropdown: React.FC<Props> = props => {
                 )}
                 <StyledDropdownBody>
                     <StyledDropdownList className='overflow-y-scroll'>
-                        {options.map(option => (
-                            <StyledDropdownListItem
-                                className='cursor-pointer'
-                                key={uuid()}>
-                                {option.label}
-                            </StyledDropdownListItem>
-                        ))}
+                        {options.map(option => {
+                            let isSelected = helpers.getLabel(
+                                selectedOptions,
+                                option.value,
+                            )
+                            return isSelected.length > 0 ? (
+                                <StyledDropdownSelectedListItem
+                                    className='cursor-pointer flex item-center'
+                                    key={uuid()}>
+                                    <Icon
+                                        icon='Check'
+                                        fill='#24292e'
+                                        margin='0 6px 0 0'
+                                    />
+                                    {option.label}
+                                </StyledDropdownSelectedListItem>
+                            ) : (
+                                <StyledDropdownListItem
+                                    className='cursor-pointer'
+                                    key={uuid()}>
+                                    {option.label}
+                                </StyledDropdownListItem>
+                            )
+                        })}
                     </StyledDropdownList>
                 </StyledDropdownBody>
             </StyledDropdown>

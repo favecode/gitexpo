@@ -1,23 +1,24 @@
 import React from 'react'
-import { Provider } from 'react-redux'
 import { ApolloProvider } from '@apollo/react-hooks'
 import { Router, Route } from 'react-router-dom'
 import * as history from 'history'
+import Initialize from 'app/components/Initialize'
 import routes, { RouteType } from './routes'
 import apollo from 'app/apollo'
-import store from './store'
+import ExploreProvider from 'app/contexts/explore'
 
 const App: React.FC = () => {
     return (
-        <Provider store={store}>
+        <ExploreProvider>
             <ApolloProvider client={apollo}>
+                <Initialize />
                 <Router history={history.createBrowserHistory()}>
                     {routes.map((route: RouteType) => (
                         <Route key={route.path} {...route} />
                     ))}
                 </Router>
             </ApolloProvider>
-        </Provider>
+        </ExploreProvider>
     )
 }
 

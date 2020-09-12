@@ -1,1 +1,1 @@
-export const ADD_REPOS: string = 'ADD_REPOS'
+export const ADD_REPOSITORIES: string = 'ADD_REPOSITORIES'

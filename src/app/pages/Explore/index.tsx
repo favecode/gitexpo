@@ -1,31 +1,39 @@
 import React from 'react'
+import { useQuery } from '@apollo/react-hooks'
+import * as ls from 'local-storage'
 import Header from './Header'
 import Main from './Main'
 import { Props as RepositoryType } from 'app/components/Repository'
-import { useQuery } from '@apollo/react-hooks'
+import { FiltersType } from 'app/pages/Explore/Main/Filters'
 import api from 'app/api'
+import { ExploreContext } from 'app/contexts/explore'
+import { ADD_REPOSITORIES } from 'app/constants/actionTypes'
 
 const Explore: React.FC = () => {
-    const treding = useQuery(api.trending)
-    const [repositories, setRepositories] = React.useState<
-        RepositoryType[] | null
-    >(null)
+    const { dispatch } = React.useContext(ExploreContext)
+
+    let filters: FiltersType = ls.get<FiltersType>('filters')
+    const treding = useQuery(api.trending, {
+        variables: {
+            since: filters.since,
+            languages: filters.languages,
+            spokenLanguages: filters.spokenLanguages,
+        },
+    })
 
     React.useEffect(() => {
         if (treding.data) {
-            console.log(treding.data.trending)
-            setRepositories(treding.data.trending)
+            dispatch({
+                type: ADD_REPOSITORIES,
+                repositories: treding.data.trending,
+            })
         }
     }, [treding.data])
 
     return (
         <div>
-            {repositories && (
-                <>
-                    <Header />
-                    <Main repositories={repositories} />
-                </>
-            )}
+            <Header />
+            <Main />
         </div>
     )
 }

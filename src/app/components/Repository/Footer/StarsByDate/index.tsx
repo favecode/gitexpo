@@ -1,7 +1,6 @@
 import React from 'react'
 import { StyledStarsByDate } from './StyledStarsByDate'
-import { ReactSVG } from 'react-svg'
-import Star from 'app/public/icons/star.svg'
+import Icon from 'app/components/Icon'
 import helpers from 'app/helpers'
 
 export interface Props {
@@ -11,15 +10,11 @@ export interface Props {
 const StarsByDate: React.FC<Props> = props => {
     return (
         <StyledStarsByDate className='inline-flex items-center justify-self-end ml-auto'>
-            <ReactSVG
-                src={Star}
-                wrapper='span'
-                beforeInjection={(svg: SVGElement) => {
-                    svg.setAttribute(
-                        'style',
-                        'width: 16px;fill: #6a737d;margin-right:2px;display: inline;',
-                    )
-                }}
+            <Icon
+                icon='Star'
+                fill='#6a737d'
+                margin='0 2px 0 0'
+                display='inline'
             />
             <span>{helpers.numberFormat(props.currentPeriodStars)}</span>
             <span className='pl-1'>stars this week</span>
