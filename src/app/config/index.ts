@@ -1,11 +1,11 @@
-import { DEFAULT_ECDH_CURVE } from 'tls'
-
-export const PROTOCOL: string = 'https'
+export const PORT: number = 8000
+export const PROTOCOL: string = 'http'
 export const ENDPOINT: string = 'graphql'
-export const DOMAIN_URL = 'github.com'
-export const API_URL: string = `${PROTOCOL}://api.${DOMAIN_URL}/${ENDPOINT}`
+export const DOMAIN_URL = 'localhost'
+export const API_URL: string = `${PROTOCOL}://${DOMAIN_URL}:${PORT}/${ENDPOINT}`
 
 export default {
+    PORT,
     PROTOCOL,
     ENDPOINT,
     DOMAIN_URL,

@@ -3,40 +3,37 @@ import Header from './Header'
 import Main from './Main'
 import Footer from './Footer'
 import { ContributorType } from './Footer/Contributors'
+import { StyledRepository } from './StyledRepository'
 
 export interface Props {
     name: string
-    owner: {
-        login: string
-    }
-    html_url: string
+    author: string
+    url: string
     description: string
-    stargazers_count: number
-    stargazers_by_date_count: number
-    forks_count: number
+    stars: number
+    currentPeriodStars: number
+    forks: number
     language: string
+    languageColor: string
     contributors: ContributorType[]
 }
 
 const Repository: React.FC<Props> = props => {
     return (
-        <article className='p-4'>
-            <Header
-                name={props.name}
-                owner={props.owner}
-                html_url={props.html_url}
-            />
+        <StyledRepository className='p-4'>
+            <Header name={props.name} author={props.author} url={props.url} />
             <Main description={props.description} />
             <Footer
                 name={props.name}
-                html_url={props.html_url}
-                stargazers_count={props.stargazers_count}
-                stargazers_by_date_count={props.stargazers_by_date_count}
-                forks_count={props.forks_count}
+                url={props.url}
+                stars={props.stars}
+                currentPeriodStars={props.currentPeriodStars}
+                forks={props.forks}
                 language={props.language}
+                languageColor={props.languageColor}
                 contributors={props.contributors}
             />
-        </article>
+        </StyledRepository>
     )
 }
 

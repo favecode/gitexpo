@@ -2,39 +2,17 @@ import React from 'react'
 import Repository, { Props as RepositoryType } from 'app/components/Repository'
 import { v4 as uuid } from 'uuid'
 
-const Items: React.FC = () => {
-    const repositories: RepositoryType[] = [
-        {
-            name: 'rome',
-            owner: {
-                login: 'romefrontend',
-            },
-            html_url: 'https://github.com/romefrontend/rome',
-            description:
-                'The Rome Frontend Toolchain. A linter, compiler, bundler, and more for JavaScript, TypeScript, HTML, Markdown, and CSS.',
-            stargazers_count: 13277,
-            stargazers_by_date_count: 303,
-            forks_count: 420,
-            language: 'Typescript',
-            contributors: [
-                {
-                    avatar_url:
-                        'https://avatars0.githubusercontent.com/u/853712?v=4',
-                    html_url: 'https://github.com/sebmck',
-                },
-                {
-                    avatar_url:
-                        'https://avatars3.githubusercontent.com/u/5262527?v=4',
-                    html_url: 'https://github.com/diokey',
-                },
-            ],
-        },
-    ]
+interface Props {
+    repositories: RepositoryType[]
+}
+
+const Items: React.FC<Props> = props => {
     return (
         <div>
-            {repositories.map(repository => (
-                <Repository key={uuid()} {...repository} />
-            ))}
+            {props.repositories != null &&
+                props.repositories.map(repository => (
+                    <Repository key={uuid()} {...repository} />
+                ))}
         </div>
     )
 }

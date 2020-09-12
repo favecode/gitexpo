@@ -8,31 +8,30 @@ import StarsByDate from './StarsByDate'
 
 export interface Props {
     name: string
-    html_url: string
-    stargazers_count: number
-    stargazers_by_date_count: number
-    forks_count: number
+    url: string
+    stars: number
+    currentPeriodStars: number
+    forks: number
     language: string
+    languageColor: string
     contributors: ContributorType[]
 }
 
 const Footer: React.FC<Props> = props => {
     return (
         <StyledFooter className='flex flex-row items-center justify-start mt-3'>
-            <Language language={props.language} />
-            <Stars
-                stargazers_count={props.stargazers_count}
-                html_url={props.html_url}
-            />
-            <Forks
-                name={props.name}
-                forks_count={props.forks_count}
-                html_url={props.html_url}
-            />
-            <Contributors contributors={props.contributors} />
-            <StarsByDate
-                stargazers_by_date_count={props.stargazers_by_date_count}
-            />
+            {props.language && (
+                <Language
+                    language={props.language}
+                    languageColor={props.languageColor}
+                />
+            )}
+            <Stars stars={props.stars} url={props.url} />
+            <Forks name={props.name} forks={props.forks} url={props.url} />
+            {props.contributors.length > 0 && (
+                <Contributors contributors={props.contributors} />
+            )}
+            <StarsByDate currentPeriodStars={props.currentPeriodStars} />
         </StyledFooter>
     )
 }

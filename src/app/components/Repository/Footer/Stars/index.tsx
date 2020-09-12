@@ -5,14 +5,14 @@ import Star from 'app/public/icons/star.svg'
 import helpers from 'app/helpers'
 
 export interface Props {
-    html_url: string
-    stargazers_count: number
+    url: string
+    stars: number
 }
 
 const Stars: React.FC<Props> = props => {
     return (
         <StyledStars
-            href={`${props.html_url}/stargazers`}
+            href={`${props.url}/stargazers`}
             className='inline-flex items-center mr-4 cursor-pointer'>
             <ReactSVG
                 src={Star}
@@ -24,7 +24,7 @@ const Stars: React.FC<Props> = props => {
                     )
                 }}
             />
-            <span>{helpers.numberFormat(props.stargazers_count)}</span>
+            <span>{helpers.numberFormat(props.stars)}</span>
         </StyledStars>
     )
 }

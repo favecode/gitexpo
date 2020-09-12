@@ -12,7 +12,8 @@ const Filters: React.FC = () => {
             title: 'Select a spoken language',
             options: options.spokenLanguages,
             selectedOptions: [],
-            searchBox: true,
+            select: true,
+            selectPlaceHolder: 'Filter spoken languages',
         },
         {
             label: 'Language:',
@@ -20,7 +21,8 @@ const Filters: React.FC = () => {
             title: 'Select a language',
             options: options.languages,
             selectedOptions: [],
-            searchBox: true,
+            select: true,
+            selectPlaceHolder: 'Filter languages',
         },
         {
             label: 'Date range:',
@@ -28,7 +30,8 @@ const Filters: React.FC = () => {
             title: 'Adjust time span',
             options: options.dateRange,
             selectedOptions: [],
-            searchBox: false,
+            select: false,
+            selectPlaceHolder: '',
         },
     ]
     return (

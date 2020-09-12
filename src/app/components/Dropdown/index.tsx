@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import {
     StyledDropdownLabel,
     StyledDropdown,
@@ -10,6 +10,7 @@ import {
 } from './StyledDropdown'
 import { OptionType } from 'app/options/types'
 import { v4 as uuid } from 'uuid'
+import Select from 'react-select'
 
 export interface Props {
     label: string
@@ -17,11 +18,14 @@ export interface Props {
     title: string
     options: OptionType[]
     selectedOptions: OptionType[]
-    searchBox: boolean
+    select: boolean
+    selectPlaceHolder: string
 }
 
 const Dropdown: React.FC<Props> = props => {
     const [visible, setVisible] = React.useState<boolean>(false)
+    const [options, setOptions] = React.useState<OptionType[]>(props.options)
+    const selectRef = useRef<any>()
 
     const handleVisibleToggle: () => void = () =>
         setVisible((prevState: boolean) => !prevState)
@@ -43,14 +47,19 @@ const Dropdown: React.FC<Props> = props => {
                     visible ? '' : 'hidden'
                 } shadow-xl bg-white mt-2 rounded-md overflow-hidden`}>
                 <StyledDropdownHeader>{props.title}</StyledDropdownHeader>
-                {props.searchBox && (
+                {props.select && (
                     <StyledDropdownSearchBox>
-                        Search Box
+                        <Select
+                            ref={selectRef}
+                            isMulti
+                            options={options}
+                            placeholder={props.selectPlaceHolder}
+                        />
                     </StyledDropdownSearchBox>
                 )}
                 <StyledDropdownBody>
                     <StyledDropdownList className='overflow-y-scroll'>
-                        {props.options.map(option => (
+                        {options.map(option => (
                             <StyledDropdownListItem
                                 className='cursor-pointer'
                                 key={uuid()}>

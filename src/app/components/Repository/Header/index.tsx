@@ -6,17 +6,15 @@ import { ReactSVG } from 'react-svg'
 
 export interface Props {
     name: string
-    owner: {
-        login: string
-    }
-    html_url: string
+    author: string
+    url: string
 }
 
 const Header: React.FC<Props> = props => {
     return (
         <StyledHeader className='flex flex-row items-center justify-between'>
             <StyledFullName
-                href={`${props.html_url}`}
+                href={`${props.url}`}
                 className='inline-flex items-end cursor-pointer'>
                 <ReactSVG
                     src={Reop}
@@ -28,7 +26,7 @@ const Header: React.FC<Props> = props => {
                         )
                     }}
                 />
-                <span>{`${props.owner.login} / `}</span>
+                <span>{`${props.author} / `}</span>
                 <span className='font-bold pl-1'>{props.name}</span>
             </StyledFullName>
             <StyledStarButton className='inline-flex items-center rounded-md px-3 py-1 shadow-sm'>

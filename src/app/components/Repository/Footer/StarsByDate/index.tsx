@@ -5,7 +5,7 @@ import Star from 'app/public/icons/star.svg'
 import helpers from 'app/helpers'
 
 export interface Props {
-    stargazers_by_date_count: number
+    currentPeriodStars: number
 }
 
 const StarsByDate: React.FC<Props> = props => {
@@ -21,7 +21,7 @@ const StarsByDate: React.FC<Props> = props => {
                     )
                 }}
             />
-            <span>{helpers.numberFormat(props.stargazers_by_date_count)}</span>
+            <span>{helpers.numberFormat(props.currentPeriodStars)}</span>
             <span className='pl-1'>stars this week</span>
         </StyledStarsByDate>
     )

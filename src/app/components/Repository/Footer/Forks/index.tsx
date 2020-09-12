@@ -6,14 +6,14 @@ import helpers from 'app/helpers'
 
 export interface Props {
     name: string
-    html_url: string
-    forks_count: number
+    url: string
+    forks: number
 }
 
 const Forks: React.FC<Props> = props => {
     return (
         <StyledForks
-            href={`${props.html_url}/network/members.${props.name}`}
+            href={`${props.url}/network/members.${props.name}`}
             className='inline-flex items-center mr-4 cursor-pointer'>
             <ReactSVG
                 src={Fork}
@@ -25,7 +25,7 @@ const Forks: React.FC<Props> = props => {
                     )
                 }}
             />
-            <span>{helpers.numberFormat(props.forks_count)}</span>
+            <span>{helpers.numberFormat(props.forks)}</span>
         </StyledForks>
     )
 }
