@@ -4,6 +4,7 @@ import Fork from 'app/public/icons/fork.svg'
 import Star from 'app/public/icons/star.svg'
 import Check from 'app/public/icons/check.svg'
 import Repo from 'app/public/icons/repo.svg'
+import X from 'app/public/icons/x.svg'
 
 interface Props {
     icon: string
@@ -42,6 +43,8 @@ const switchIcon: (icon: string) => string | undefined = icon => {
             return Check
         case 'Repo':
             return Repo
+        case 'X':
+            return X
     }
 }
 

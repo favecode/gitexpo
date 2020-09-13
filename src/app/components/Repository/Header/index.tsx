@@ -13,15 +13,17 @@ const Header: React.FC<Props> = props => {
         <StyledHeader className='flex flex-row items-center justify-between'>
             <StyledFullName
                 href={`${props.url}`}
-                className='inline-flex items-end cursor-pointer'>
-                <Icon
-                    icon='Reop'
-                    fill='#586069'
-                    margin='0 8px 0 0'
-                    display='inline-block'
-                />
-                <span>{`${props.author} / `}</span>
-                <span className='font-bold pl-1'>{props.name}</span>
+                className='inline-flex items-end cursor-pointer flex-wrap'>
+                <span>
+                    <Icon
+                        icon='Repo'
+                        fill='#586069'
+                        margin='0 8px 0 0'
+                        display='inline-block'
+                    />
+                    {`${props.author} / `}
+                    <span className='font-bold pl-1'>{props.name}</span>
+                </span>
             </StyledFullName>
             <StyledStarButton className='inline-flex items-center rounded-md px-3 py-1 shadow-sm'>
                 <Icon

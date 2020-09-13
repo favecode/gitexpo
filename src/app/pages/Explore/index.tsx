@@ -37,7 +37,9 @@ const Explore: React.FC = () => {
     return (
         <div>
             <Header />
-            <Main />
+            <div className='px-3'>
+                <Main />
+            </div>
         </div>
     )
 }

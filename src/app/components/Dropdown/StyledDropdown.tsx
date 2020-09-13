@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const StyledDropdownLabel = styled.div`
     color: #586069;
@@ -74,9 +74,12 @@ export const StyledDropdownListItem = styled.div`
 `
 export const StyledDropdownSelectedListItem = styled.div`
     padding: 8px 10px;
-    font-weight: bold;
     box-sizing: border-box;
-    color: #24292e;
+    ${props =>
+        props.color &&
+        css`
+            color: ${props.color};
+        `};
     &:hover {
         background-color: #0465d6;
         color: white;

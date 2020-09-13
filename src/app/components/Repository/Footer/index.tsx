@@ -19,7 +19,7 @@ export interface Props {
 
 const Footer: React.FC<Props> = props => {
     return (
-        <StyledFooter className='flex flex-row items-center justify-start mt-3'>
+        <StyledFooter className='flex flex-row items-center justify-start mt-3 flex-wrap'>
             {props.language && (
                 <Language
                     language={props.language}

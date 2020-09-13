@@ -19,7 +19,7 @@ export const filtersReducer = (
     let filters: FiltersType
     switch (action.type) {
         case EDIT_FILTERS:
-            let filters = {
+            filters = {
                 ...state,
                 ...action.data,
             }

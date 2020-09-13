@@ -47,6 +47,18 @@ const Dropdown: React.FC<Props> = props => {
         },
     )
 
+    const handleClearFilter = () => {
+        dispatch({
+            type: EDIT_FILTERS,
+            data: {
+                [props.id]: [],
+            },
+        })
+        exploreDispatch({
+            type: CLEAR_REPOSITORIES,
+        })
+    }
+
     const handleChangeFilters = (option: OptionType) => {
         if (props.id === 'since') {
             dispatch({
@@ -69,11 +81,11 @@ const Dropdown: React.FC<Props> = props => {
     }
 
     return (
-        <div className='px-3 relative'>
+        <div className='py-3 pr-4 relative'>
             <StyledDropdownLabel
                 onClick={handleVisibleToggle}
                 className='cursor-pointer'>
-                {props.label}
+                {props.label}:
                 <span className='font-bold px-1'>
                     {props.selectedOptions.length > 0
                         ? selectedOptions[0].label
@@ -97,6 +109,21 @@ const Dropdown: React.FC<Props> = props => {
                 )}
                 <StyledDropdownBody>
                     <StyledDropdownList className='overflow-y-scroll'>
+                        {props.id !== 'since' &&
+                            props.selectedOptions.length > 0 && (
+                                <StyledDropdownSelectedListItem
+                                    onClick={handleClearFilter}
+                                    color='#586069'
+                                    className='cursor-pointer flex item-center'
+                                    key={uuid()}>
+                                    <Icon
+                                        icon='X'
+                                        fill='#586069'
+                                        margin='0 6px 0 0'
+                                    />
+                                    Clear {props.title.toLowerCase()}
+                                </StyledDropdownSelectedListItem>
+                            )}
                         {options.map(option => {
                             let isSelected = helpers.getLabel(
                                 selectedOptions,
@@ -104,7 +131,8 @@ const Dropdown: React.FC<Props> = props => {
                             )
                             return isSelected.length > 0 ? (
                                 <StyledDropdownSelectedListItem
-                                    className='cursor-pointer flex item-center'
+                                    color='#24292e'
+                                    className='cursor-pointer flex item-center font-bold'
                                     key={uuid()}>
                                     <Icon
                                         icon='Check'

@@ -10,6 +10,9 @@ export const StyledFullName = styled.a`
         text-decoration: underline;
     }
     color: #0366d6;
+    & span {
+        word-break: break-word;
+    }
 `
 
 export const StyledStarButton = styled.button`

@@ -11,13 +11,13 @@ export interface FiltersType {
     since: string
 }
 
-const Type: React.FC = () => {
+const Filters: React.FC = () => {
     const { state: filters } = React.useContext(FiltersContext)
 
     const dropdowns: DropdownTypes[] = [
         {
             id: 'spokenLanguages',
-            label: 'Spoken Language:',
+            label: 'Spoken Language',
             defaultLabel: 'Any',
             title: 'Select a spoken language',
             options: options.spokenLanguages,
@@ -27,7 +27,7 @@ const Type: React.FC = () => {
         },
         {
             id: 'languages',
-            label: 'Language:',
+            label: 'Language',
             defaultLabel: 'Any',
             title: 'Select a language',
             options: options.languages,
@@ -37,7 +37,7 @@ const Type: React.FC = () => {
         },
         {
             id: 'since',
-            label: 'Date range:',
+            label: 'Date range',
             defaultLabel: 'Today',
             title: 'Adjust time span',
             options: options.dateRange,
@@ -47,7 +47,7 @@ const Type: React.FC = () => {
         },
     ]
     return (
-        <StyledFilter className='flex flex-row justify-end p-5 bg-gray-100 rounded-t-lg'>
+        <StyledFilter className='flex flex-row justify-start px-5 py-2 bg-gray-100 rounded-t-lg flex-wrap'>
             {dropdowns.map(dropdown => (
                 <Dropdown key={`${uuid()}`} {...dropdown} />
             ))}
@@ -55,4 +55,4 @@ const Type: React.FC = () => {
     )
 }
 
-export default Type
+export default Filters
