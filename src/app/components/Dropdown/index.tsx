@@ -55,11 +55,17 @@ const Dropdown: React.FC<Props> = props => {
                     since: option.value,
                 },
             })
-
-            exploreDispatch({
-                type: CLEAR_REPOSITORIES,
+        } else {
+            dispatch({
+                type: EDIT_FILTERS,
+                data: {
+                    [props.id]: [option.value],
+                },
             })
         }
+        exploreDispatch({
+            type: CLEAR_REPOSITORIES,
+        })
     }
 
     return (

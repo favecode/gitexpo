@@ -3,11 +3,11 @@ import { exploreReducer } from 'app/reducers/explore'
 import { Props as RepositoryType } from 'app/components/Repository'
 
 export interface Explore {
-    repositories: RepositoryType[]
+    repositories: RepositoryType[] | null
 }
 
 export const initialExplore: Explore = {
-    repositories: [],
+    repositories: null,
 }
 
 interface IContextProps {

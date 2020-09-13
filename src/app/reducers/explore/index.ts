@@ -20,7 +20,7 @@ export const exploreReducer = (
         case CLEAR_REPOSITORIES:
             return {
                 ...state,
-                repositories: [],
+                repositories: null,
             }
         default:
             return state
