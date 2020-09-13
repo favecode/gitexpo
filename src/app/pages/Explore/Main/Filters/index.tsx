@@ -3,7 +3,7 @@ import Dropdown, { Props as DropdownTypes } from 'app/components/Dropdown'
 import { v4 as uuid } from 'uuid'
 import { StyledFilter } from './StyledFilter'
 import options from 'app/options'
-import * as ls from 'local-storage'
+import { FiltersContext } from 'app/contexts/filters'
 
 export interface FiltersType {
     languages: string[]
@@ -12,8 +12,8 @@ export interface FiltersType {
 }
 
 const Type: React.FC = () => {
-    let filters: FiltersType = ls.get<FiltersType>('filters')
-
+    const { state: filters } = React.useContext(FiltersContext)
+    console.log(filters)
     const dropdowns: DropdownTypes[] = [
         {
             label: 'Spoken Language:',

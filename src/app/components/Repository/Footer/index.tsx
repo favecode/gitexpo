@@ -4,7 +4,7 @@ import Language from './Language'
 import Stars from './Stars'
 import Forks from './Forks'
 import Contributors, { ContributorType } from './Contributors'
-import StarsByDate from './StarsByDate'
+import CurrentPeriodStars from './CurrentPeriodStars'
 
 export interface Props {
     name: string
@@ -31,7 +31,7 @@ const Footer: React.FC<Props> = props => {
             {props.contributors.length > 0 && (
                 <Contributors contributors={props.contributors} />
             )}
-            <StarsByDate currentPeriodStars={props.currentPeriodStars} />
+            <CurrentPeriodStars currentPeriodStars={props.currentPeriodStars} />
         </StyledFooter>
     )
 }

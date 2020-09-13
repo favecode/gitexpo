@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyledStarsByDate } from './StyledStarsByDate'
+import { StyledCurrentPeriodStars } from './StyledCurrentPeriodStars'
 import Icon from 'app/components/Icon'
 import helpers from 'app/helpers'
 
@@ -7,9 +7,9 @@ export interface Props {
     currentPeriodStars: number
 }
 
-const StarsByDate: React.FC<Props> = props => {
+const CurrentPeriodStars: React.FC<Props> = props => {
     return (
-        <StyledStarsByDate className='inline-flex items-center justify-self-end ml-auto'>
+        <StyledCurrentPeriodStars className='inline-flex items-center justify-self-end ml-auto'>
             <Icon
                 icon='Star'
                 fill='#6a737d'
@@ -18,8 +18,8 @@ const StarsByDate: React.FC<Props> = props => {
             />
             <span>{helpers.numberFormat(props.currentPeriodStars)}</span>
             <span className='pl-1'>stars this week</span>
-        </StyledStarsByDate>
+        </StyledCurrentPeriodStars>
     )
 }
 
-export default StarsByDate
+export default CurrentPeriodStars

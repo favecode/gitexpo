@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const StyledStarsByDate = styled.div`
+export const StyledCurrentPeriodStars = styled.div`
     font-size: 12px;
     color: #586069;
     box-sizing: border-box;

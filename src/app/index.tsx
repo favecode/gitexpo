@@ -5,11 +5,11 @@ import * as history from 'history'
 import Initialize from 'app/components/Initialize'
 import routes, { RouteType } from './routes'
 import apollo from 'app/apollo'
-import ExploreProvider from 'app/contexts/explore'
+import ContextProvider from 'app/contexts'
 
 const App: React.FC = () => {
     return (
-        <ExploreProvider>
+        <ContextProvider>
             <ApolloProvider client={apollo}>
                 <Initialize />
                 <Router history={history.createBrowserHistory()}>
@@ -18,7 +18,7 @@ const App: React.FC = () => {
                     ))}
                 </Router>
             </ApolloProvider>
-        </ExploreProvider>
+        </ContextProvider>
     )
 }
 

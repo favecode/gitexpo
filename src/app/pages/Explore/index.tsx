@@ -1,18 +1,16 @@
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
-import * as ls from 'local-storage'
 import Header from './Header'
 import Main from './Main'
-import { Props as RepositoryType } from 'app/components/Repository'
-import { FiltersType } from 'app/pages/Explore/Main/Filters'
 import api from 'app/api'
 import { ExploreContext } from 'app/contexts/explore'
+import { FiltersContext } from 'app/contexts/filters'
 import { ADD_REPOSITORIES } from 'app/constants/actionTypes'
 
 const Explore: React.FC = () => {
     const { dispatch } = React.useContext(ExploreContext)
+    const { state: filters } = React.useContext(FiltersContext)
 
-    let filters: FiltersType = ls.get<FiltersType>('filters')
     const treding = useQuery(api.trending, {
         variables: {
             since: filters.since,
