@@ -2,7 +2,7 @@ import React from 'react'
 import * as ls from 'local-storage'
 import { FiltersType } from 'app/pages/Explore/Main/Filters'
 import { FiltersContext } from 'app/contexts/filters'
-import { ADD_FILTERS } from 'app/constants/actionTypes'
+import { EDIT_FILTERS } from 'app/constants/actionTypes'
 
 const Initialize: React.FC = props => {
     const { dispatch } = React.useContext(FiltersContext)
@@ -20,8 +20,10 @@ const Initialize: React.FC = props => {
 
     React.useEffect(() => {
         dispatch({
-            type: ADD_FILTERS,
-            filters,
+            type: EDIT_FILTERS,
+            data: {
+                ...filters,
+            },
         })
     }, [])
 

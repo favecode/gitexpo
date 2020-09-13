@@ -13,9 +13,13 @@ import { OptionType } from 'app/options/types'
 import { v4 as uuid } from 'uuid'
 import helpers from 'app/helpers'
 import Icon from 'app/components/Icon'
+import { FiltersContext } from 'app/contexts/filters'
+import { ExploreContext } from 'app/contexts/explore'
 import Select from 'react-select'
+import { EDIT_FILTERS, CLEAR_REPOSITORIES } from 'app/constants/actionTypes'
 
 export interface Props {
+    id: string
     label: string
     defaultLabel: string
     title: string
@@ -26,6 +30,8 @@ export interface Props {
 }
 
 const Dropdown: React.FC<Props> = props => {
+    const { state: filters, dispatch } = React.useContext(FiltersContext)
+    const { dispatch: exploreDispatch } = React.useContext(ExploreContext)
     const [visible, setVisible] = React.useState<boolean>(false)
     const [options, setOptions] = React.useState<OptionType[]>(props.options)
     const selectRef = useRef<any>()
@@ -40,6 +46,21 @@ const Dropdown: React.FC<Props> = props => {
             return result[0]
         },
     )
+
+    const handleChangeFilters = (option: OptionType) => {
+        if (props.id === 'since') {
+            dispatch({
+                type: EDIT_FILTERS,
+                data: {
+                    since: option.value,
+                },
+            })
+
+            exploreDispatch({
+                type: CLEAR_REPOSITORIES,
+            })
+        }
+    }
 
     return (
         <div className='px-3 relative'>
@@ -88,6 +109,7 @@ const Dropdown: React.FC<Props> = props => {
                                 </StyledDropdownSelectedListItem>
                             ) : (
                                 <StyledDropdownListItem
+                                    onClick={() => handleChangeFilters(option)}
                                     className='cursor-pointer'
                                     key={uuid()}>
                                     {option.label}

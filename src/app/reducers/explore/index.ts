@@ -1,4 +1,4 @@
-import { ADD_REPOSITORIES } from 'app/constants/actionTypes'
+import { ADD_REPOSITORIES, CLEAR_REPOSITORIES } from 'app/constants/actionTypes'
 import { Props as RepositoryType } from 'app/components/Repository'
 import { Explore as ExploreType, initialExplore } from 'app/contexts/explore'
 
@@ -16,6 +16,11 @@ export const exploreReducer = (
             return {
                 ...state,
                 repositories: action.repositories,
+            }
+        case CLEAR_REPOSITORIES:
+            return {
+                ...state,
+                repositories: [],
             }
         default:
             return state

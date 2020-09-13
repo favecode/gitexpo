@@ -1,5 +1,5 @@
 import React from 'react'
-import { useQuery } from '@apollo/react-hooks'
+import { useLazyQuery } from '@apollo/react-hooks'
 import Header from './Header'
 import Main from './Main'
 import api from 'app/api'
@@ -9,24 +9,30 @@ import { ADD_REPOSITORIES } from 'app/constants/actionTypes'
 
 const Explore: React.FC = () => {
     const { dispatch } = React.useContext(ExploreContext)
-    const { state: filters } = React.useContext(FiltersContext)
+    const { state } = React.useContext(FiltersContext)
 
-    const treding = useQuery(api.trending, {
-        variables: {
-            since: filters.since,
-            languages: filters.languages,
-            spokenLanguages: filters.spokenLanguages,
-        },
-    })
+    const [treding, tredingResponse] = useLazyQuery(api.trending)
 
     React.useEffect(() => {
-        if (treding.data) {
-            dispatch({
-                type: ADD_REPOSITORIES,
-                repositories: treding.data.trending,
+        if (state) {
+            treding({
+                variables: {
+                    since: state.since,
+                    languages: state.languages,
+                    spokenLanguages: state.spokenLanguages,
+                },
             })
         }
-    }, [treding.data])
+    }, [state])
+
+    React.useEffect(() => {
+        if (tredingResponse.data) {
+            dispatch({
+                type: ADD_REPOSITORIES,
+                repositories: tredingResponse.data.trending,
+            })
+        }
+    }, [tredingResponse.data])
 
     return (
         <div>

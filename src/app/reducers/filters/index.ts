@@ -1,22 +1,31 @@
-import { ADD_FILTERS } from 'app/constants/actionTypes'
+import { EDIT_FILTERS } from 'app/constants/actionTypes'
 import { FiltersType } from 'app/pages/Explore/Main/Filters'
 import { initialFilters } from 'app/contexts/filters'
+import * as ls from 'local-storage'
 
 export interface Action {
     type: string
-    filters: FiltersType
+    data: {
+        languages?: string[]
+        spokenLanguages?: string[]
+        since?: string
+    }
 }
 
 export const filtersReducer = (
     state: FiltersType = initialFilters,
     action: Action,
 ) => {
+    let filters: FiltersType
     switch (action.type) {
-        case ADD_FILTERS:
-            return {
+        case EDIT_FILTERS:
+            let filters = {
                 ...state,
-                ...action.filters,
+                ...action.data,
             }
+
+            ls.set<FiltersType>('filters', filters)
+            return filters
         default:
             return state
     }

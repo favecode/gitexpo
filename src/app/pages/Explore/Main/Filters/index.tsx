@@ -13,9 +13,10 @@ export interface FiltersType {
 
 const Type: React.FC = () => {
     const { state: filters } = React.useContext(FiltersContext)
-    console.log(filters)
+
     const dropdowns: DropdownTypes[] = [
         {
+            id: 'spokenLanguages',
             label: 'Spoken Language:',
             defaultLabel: 'Any',
             title: 'Select a spoken language',
@@ -25,6 +26,7 @@ const Type: React.FC = () => {
             selectPlaceHolder: 'Filter spoken languages',
         },
         {
+            id: 'languages',
             label: 'Language:',
             defaultLabel: 'Any',
             title: 'Select a language',
@@ -34,6 +36,7 @@ const Type: React.FC = () => {
             selectPlaceHolder: 'Filter languages',
         },
         {
+            id: 'since',
             label: 'Date range:',
             defaultLabel: 'Today',
             title: 'Adjust time span',
