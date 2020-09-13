@@ -7,7 +7,7 @@ import { FiltersContext } from 'app/contexts/filters'
 
 export interface FiltersType {
     languages: string[]
-    spokenLanguages: string[]
+    spokenLanguage: string[]
     since: string
 }
 
@@ -16,12 +16,12 @@ const Filters: React.FC = () => {
 
     const dropdowns: DropdownTypes[] = [
         {
-            id: 'spokenLanguages',
+            id: 'spokenLanguage',
             label: 'Spoken Language',
             defaultLabel: 'Any',
             title: 'Select a spoken language',
             options: options.spokenLanguages,
-            selectedOptions: [...filters.spokenLanguages],
+            selectedOptions: [...filters.spokenLanguage],
             select: true,
             selectPlaceHolder: 'Filter spoken languages',
         },

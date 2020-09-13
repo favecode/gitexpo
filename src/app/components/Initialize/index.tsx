@@ -11,7 +11,7 @@ const Initialize: React.FC = props => {
     if (!filters) {
         filters = {
             languages: [],
-            spokenLanguages: [],
+            spokenLanguage: [],
             since: 'daily',
         }
 

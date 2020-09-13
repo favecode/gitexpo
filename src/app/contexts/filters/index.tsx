@@ -4,7 +4,7 @@ import { FiltersType } from 'app/pages/Explore/Main/Filters'
 
 export const initialFilters: FiltersType = {
     languages: [],
-    spokenLanguages: [],
+    spokenLanguage: [],
     since: 'daily',
 }
 

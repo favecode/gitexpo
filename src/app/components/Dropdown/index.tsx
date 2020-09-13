@@ -60,7 +60,16 @@ const Dropdown: React.FC<Props> = props => {
     }
 
     const handleChangeFilters = (option: OptionType) => {
-        if (props.id === 'since') {
+        if (props.id === 'languages') {
+            dispatch({
+                type: EDIT_FILTERS,
+                data: {
+                    languages: Array.from(
+                        new Set([...filters.languages, option.value]),
+                    ),
+                },
+            })
+        } else if (props.id === 'since') {
             dispatch({
                 type: EDIT_FILTERS,
                 data: {

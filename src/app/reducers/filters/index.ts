@@ -7,7 +7,7 @@ export interface Action {
     type: string
     data: {
         languages?: string[]
-        spokenLanguages?: string[]
+        spokenLanguage?: string[]
         since?: string
     }
 }

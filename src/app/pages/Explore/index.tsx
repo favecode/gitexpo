@@ -19,7 +19,7 @@ const Explore: React.FC = () => {
                 variables: {
                     since: state.since,
                     languages: state.languages,
-                    spokenLanguages: state.spokenLanguages,
+                    spokenLanguage: state.spokenLanguage,
                 },
             })
         }

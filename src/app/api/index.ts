@@ -3,12 +3,12 @@ import gql from 'graphql-tag'
 const trending = gql`
     query trending(
         $languages: [String]
-        $spokenLanguages: [String]
+        $spokenLanguage: [String]
         $since: String
     ) {
         trending(
             languages: $languages
-            spokenLanguages: $spokenLanguages
+            spokenLanguage: $spokenLanguage
             since: $since
         ) {
             author
