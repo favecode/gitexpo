@@ -22,7 +22,7 @@ const trending = gql`
             forks
             currentPeriodStars
             contributors {
-                herf
+                href
                 avatar
                 username
             }

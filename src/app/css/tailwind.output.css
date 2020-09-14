@@ -22396,6 +22396,46 @@ body {
   background-color: #f5f8fa;
 }
 
+.select-container {
+  border-radius: .5rem;
+  border: 1px solid #e9ecef;
+}
+
+.select-control {
+  margin: 8px 10px;
+  border-radius: .5rem !important;
+}
+
+.select-control {
+  margin: 8px 10px;
+  border-radius: .5rem !important;
+}
+
+.select-option {
+  padding: 8px 8px 8px 30px;
+  background-color: white !important;
+  color: #586069 !important;
+}
+
+.select-option:not(:last-child) {
+  border-bottom: 1px solid #e9ecef;
+}
+
+.select-option:hover {
+  background-color: #0465d6 !important;
+  color: white !important;
+}
+
+.select-menu {
+  box-shadow: none;
+  border-radius: 0 0 .5rem .5rem !important;
+  overflow: hidden;
+}
+
+.select-menu-list {
+  padding: 0 !important;
+}
+
 @media (min-width: 640px){
   .sm\:container{
     width: 100%;

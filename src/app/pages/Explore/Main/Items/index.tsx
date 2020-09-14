@@ -22,12 +22,12 @@ const Items: React.FC = props => {
                     <div className='text-center border-t font-bold p-8 text-xl'>
                         It looks like we don’t have any trending repositories
                         for{' '}
-                        {
-                            helpers.getLabel(
-                                options.languages,
-                                filters.languages[0],
-                            )[0].label
-                        }
+                        {filters.languages.length > 0
+                            ? helpers.getLabel(
+                                  options.languages,
+                                  filters.languages[0],
+                              )[0].label
+                            : 'your choices'}
                         .
                     </div>
                 )

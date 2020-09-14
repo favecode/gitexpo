@@ -46,40 +46,12 @@ const Dropdown: React.FC<Props> = props => {
         },
     )
 
-    const handleClearFilter = () => {
-        dispatch({
-            type: EDIT_FILTERS,
-            data: {
-                [props.id]: [],
-            },
-        })
-        exploreDispatch({
-            type: CLEAR_REPOSITORIES,
-        })
-    }
-
     const handleChangeFilters = (option: OptionType) => {
-        if (props.id === 'languages') {
-            dispatch({
-                type: EDIT_FILTERS,
-                data: {
-                    languages: Array.from(
-                        new Set([...filters.languages, option.value]),
-                    ),
-                },
-            })
-        } else if (props.id === 'since') {
+        if (props.id === 'since') {
             dispatch({
                 type: EDIT_FILTERS,
                 data: {
                     since: option.value,
-                },
-            })
-        } else {
-            dispatch({
-                type: EDIT_FILTERS,
-                data: {
-                    [props.id]: [option.value],
                 },
             })
         }
@@ -124,21 +96,6 @@ const Dropdown: React.FC<Props> = props => {
                     <StyledDropdownHeader>{props.title}</StyledDropdownHeader>
                     <StyledDropdownBody>
                         <StyledDropdownList className='overflow-y-scroll'>
-                            {props.id !== 'since' &&
-                                props.selectedOptions.length > 0 && (
-                                    <StyledDropdownSelectedListItem
-                                        onClick={handleClearFilter}
-                                        color='#586069'
-                                        className='cursor-pointer flex item-center'
-                                        key={uuid()}>
-                                        <Icon
-                                            icon='X'
-                                            fill='#586069'
-                                            margin='0 6px 0 0'
-                                        />
-                                        Clear {props.title.toLowerCase()}
-                                    </StyledDropdownSelectedListItem>
-                                )}
                             {options.map(option => {
                                 let isSelected = helpers.getLabel(
                                     selectedOptions,
