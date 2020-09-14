@@ -6,7 +6,7 @@ import Check from 'app/public/icons/check.svg'
 import Repo from 'app/public/icons/repo.svg'
 import X from 'app/public/icons/x.svg'
 
-interface Props {
+export interface Props {
     icon: string
     width?: string
     fill?: string

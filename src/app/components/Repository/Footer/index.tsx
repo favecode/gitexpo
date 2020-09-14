@@ -5,6 +5,7 @@ import Stars from './Stars'
 import Forks from './Forks'
 import Contributors, { ContributorType } from './Contributors'
 import CurrentPeriodStars from './CurrentPeriodStars'
+import { FiltersContext } from 'app/contexts/filters'
 
 export interface Props {
     name: string
@@ -18,6 +19,8 @@ export interface Props {
 }
 
 const Footer: React.FC<Props> = props => {
+    const { state: filters } = React.useContext(FiltersContext)
+
     return (
         <StyledFooter className='flex flex-row items-center justify-start mt-3 flex-wrap'>
             {props.language && (
@@ -31,7 +34,10 @@ const Footer: React.FC<Props> = props => {
             {props.contributors.length > 0 && (
                 <Contributors contributors={props.contributors} />
             )}
-            <CurrentPeriodStars currentPeriodStars={props.currentPeriodStars} />
+            <CurrentPeriodStars
+                currentPeriodStars={props.currentPeriodStars}
+                since={filters.since}
+            />
         </StyledFooter>
     )
 }

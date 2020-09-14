@@ -4,7 +4,7 @@ import { v4 as uuid } from 'uuid'
 
 export interface ContributorType {
     avatar: string
-    herf: string
+    href: string
 }
 
 export interface Props {
@@ -24,7 +24,7 @@ const Contributors: React.FC<Props> = props => {
 
 const Contributor: React.FC<ContributorType> = props => {
     return (
-        <a href={`${props.herf}`} className='inline-flex mr-1 cursor-pointer'>
+        <a href={`${props.href}`} className='inline-flex mr-1 cursor-pointer'>
             <StyledAvatar src={props.avatar} />
         </a>
     )

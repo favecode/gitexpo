@@ -1,7 +1,7 @@
 import React from 'react'
 import { mount } from 'enzyme'
 import Header from '../index'
-describe('Explorer<Header>', () => {
+describe('Explorer - Header', () => {
     it('Trending', () => {
         const wrapper = mount(<Header />)
         expect(wrapper.find('h1').text()).toEqual('Trending')

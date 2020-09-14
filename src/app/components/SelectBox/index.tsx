@@ -4,17 +4,7 @@ import { FiltersContext } from 'app/contexts/filters'
 import { ExploreContext } from 'app/contexts/explore'
 import Select, { components } from 'react-select'
 import { EDIT_FILTERS, CLEAR_REPOSITORIES } from 'app/constants/actionTypes'
-
-export interface Props {
-    id: string
-    label: string
-    defaultLabel: string
-    title: string
-    options: OptionType[]
-    selectedOptions: string[]
-    select: boolean
-    selectPlaceHolder: string
-}
+import { Props } from 'app/components/Dropdown'
 
 const Dropdown: React.FC<Props> = props => {
     const { state: filters, dispatch } = React.useContext(FiltersContext)
@@ -23,7 +13,7 @@ const Dropdown: React.FC<Props> = props => {
 
     const handleChangeFilters = (options: any) => {
         if (props.id === 'languages') {
-            if (options.length > 0) {
+            if (options && options.length > 0) {
                 let languages: string[] = []
                 options.map((option: OptionType) => {
                     languages.push(option.value)
