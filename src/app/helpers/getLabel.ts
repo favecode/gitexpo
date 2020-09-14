@@ -1,3 +1,4 @@
+// Find label from array of option type with value
 import { OptionType } from 'app/options/types'
 
 const getLabel: (arr: OptionType[], value: string) => OptionType[] = (
