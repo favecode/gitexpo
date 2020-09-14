@@ -24,8 +24,12 @@ export const StyledDropdownLabel = styled.div`
 export const StyledDropdown = styled.div`
     width: 300px;
     position: absolute;
-    right: 0;
+    ${window.innerWidth > 768 &&
+    css`
+        right: 0;
+    `};
     border: 1px solid rgba(27, 31, 35, 0.15);
+    z-index: 100;
 `
 
 export const StyledDropdownHeader = styled.div`
@@ -45,11 +49,15 @@ export const StyledDropdownBody = styled.div`
 export const StyledDropdownSearchBox = styled.div`
     width: 300px;
     position: absolute;
-    right: 0;
+    ${window.innerWidth > 768 &&
+    css`
+        right: 0;
+    `};
     font-size: 12px;
     box-sizing: border-box;
     color: #24292e;
     border: 1px solid #e9ecef;
+    z-index: 100;
 `
 
 export const StyledDropdownList = styled.div`
