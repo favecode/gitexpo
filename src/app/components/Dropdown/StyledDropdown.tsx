@@ -43,11 +43,13 @@ export const StyledDropdownBody = styled.div`
 `
 
 export const StyledDropdownSearchBox = styled.div`
+    width: 300px;
+    position: absolute;
+    right: 0;
     font-size: 12px;
-    padding: 8px 10px;
     box-sizing: border-box;
-    color: #586069;
-    border-bottom: 1px solid #e9ecef;
+    color: #24292e;
+    border: 1px solid #e9ecef;
 `
 
 export const StyledDropdownList = styled.div`
@@ -72,6 +74,7 @@ export const StyledDropdownListItem = styled.div`
         border-bottom: 1px solid #e9ecef;
     }
 `
+
 export const StyledDropdownSelectedListItem = styled.div`
     padding: 8px 10px;
     box-sizing: border-box;

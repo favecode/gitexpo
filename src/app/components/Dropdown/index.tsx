@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import {
     StyledDropdownLabel,
     StyledDropdown,
@@ -15,7 +15,7 @@ import helpers from 'app/helpers'
 import Icon from 'app/components/Icon'
 import { FiltersContext } from 'app/contexts/filters'
 import { ExploreContext } from 'app/contexts/explore'
-import Select from 'react-select'
+import SelectBox from 'app/components/SelectBox'
 import { EDIT_FILTERS, CLEAR_REPOSITORIES } from 'app/constants/actionTypes'
 
 export interface Props {
@@ -33,8 +33,7 @@ const Dropdown: React.FC<Props> = props => {
     const { state: filters, dispatch } = React.useContext(FiltersContext)
     const { dispatch: exploreDispatch } = React.useContext(ExploreContext)
     const [visible, setVisible] = React.useState<boolean>(false)
-    const [options, setOptions] = React.useState<OptionType[]>(props.options)
-    const selectRef = useRef<any>()
+    const [options] = React.useState<OptionType[]>(props.options)
 
     const handleVisibleToggle: () => void = () =>
         setVisible((prevState: boolean) => !prevState)
@@ -96,72 +95,82 @@ const Dropdown: React.FC<Props> = props => {
                 className='cursor-pointer'>
                 {props.label}:
                 <span className='font-bold px-1'>
-                    {props.selectedOptions.length > 0
+                    {props.selectedOptions.length > 1
+                        ? selectedOptions.map(
+                              (selectedOption: OptionType, key: number) =>
+                                  `${key > 0 ? ', ' : ''}${
+                                      selectedOption.label
+                                  }`,
+                          )
+                        : props.selectedOptions.length > 0
                         ? selectedOptions[0].label
                         : props.defaultLabel}
                 </span>
             </StyledDropdownLabel>
-            <StyledDropdown
-                className={`${
-                    visible ? '' : 'hidden'
-                } shadow-xl bg-white mt-2 rounded-md overflow-hidden`}>
-                <StyledDropdownHeader>{props.title}</StyledDropdownHeader>
-                {props.select && (
-                    <StyledDropdownSearchBox>
-                        <Select
-                            ref={selectRef}
-                            isMulti
-                            options={options}
-                            placeholder={props.selectPlaceHolder}
-                        />
-                    </StyledDropdownSearchBox>
-                )}
-                <StyledDropdownBody>
-                    <StyledDropdownList className='overflow-y-scroll'>
-                        {props.id !== 'since' &&
-                            props.selectedOptions.length > 0 && (
-                                <StyledDropdownSelectedListItem
-                                    onClick={handleClearFilter}
-                                    color='#586069'
-                                    className='cursor-pointer flex item-center'
-                                    key={uuid()}>
-                                    <Icon
-                                        icon='X'
-                                        fill='#586069'
-                                        margin='0 6px 0 0'
-                                    />
-                                    Clear {props.title.toLowerCase()}
-                                </StyledDropdownSelectedListItem>
-                            )}
-                        {options.map(option => {
-                            let isSelected = helpers.getLabel(
-                                selectedOptions,
-                                option.value,
-                            )
-                            return isSelected.length > 0 ? (
-                                <StyledDropdownSelectedListItem
-                                    color='#24292e'
-                                    className='cursor-pointer flex item-center font-bold'
-                                    key={uuid()}>
-                                    <Icon
-                                        icon='Check'
-                                        fill='#24292e'
-                                        margin='0 6px 0 0'
-                                    />
-                                    {option.label}
-                                </StyledDropdownSelectedListItem>
-                            ) : (
-                                <StyledDropdownListItem
-                                    onClick={() => handleChangeFilters(option)}
-                                    className='cursor-pointer'
-                                    key={uuid()}>
-                                    {option.label}
-                                </StyledDropdownListItem>
-                            )
-                        })}
-                    </StyledDropdownList>
-                </StyledDropdownBody>
-            </StyledDropdown>
+
+            {props.select ? (
+                <StyledDropdownSearchBox
+                    className={`${
+                        visible ? '' : 'hidden'
+                    } shadow-xl bg-white mt-2 rounded-t-md `}>
+                    <StyledDropdownHeader>{props.title}</StyledDropdownHeader>
+                    <SelectBox {...props} />
+                </StyledDropdownSearchBox>
+            ) : (
+                <StyledDropdown
+                    className={`${
+                        visible ? '' : 'hidden'
+                    } shadow-xl bg-white mt-2 rounded-md overflow-hidden`}>
+                    <StyledDropdownHeader>{props.title}</StyledDropdownHeader>
+                    <StyledDropdownBody>
+                        <StyledDropdownList className='overflow-y-scroll'>
+                            {props.id !== 'since' &&
+                                props.selectedOptions.length > 0 && (
+                                    <StyledDropdownSelectedListItem
+                                        onClick={handleClearFilter}
+                                        color='#586069'
+                                        className='cursor-pointer flex item-center'
+                                        key={uuid()}>
+                                        <Icon
+                                            icon='X'
+                                            fill='#586069'
+                                            margin='0 6px 0 0'
+                                        />
+                                        Clear {props.title.toLowerCase()}
+                                    </StyledDropdownSelectedListItem>
+                                )}
+                            {options.map(option => {
+                                let isSelected = helpers.getLabel(
+                                    selectedOptions,
+                                    option.value,
+                                )
+                                return isSelected.length > 0 ? (
+                                    <StyledDropdownSelectedListItem
+                                        color='#24292e'
+                                        className='cursor-pointer flex item-center font-bold'
+                                        key={uuid()}>
+                                        <Icon
+                                            icon='Check'
+                                            fill='#24292e'
+                                            margin='0 6px 0 0'
+                                        />
+                                        {option.label}
+                                    </StyledDropdownSelectedListItem>
+                                ) : (
+                                    <StyledDropdownListItem
+                                        onClick={() =>
+                                            handleChangeFilters(option)
+                                        }
+                                        className='cursor-pointer'
+                                        key={uuid()}>
+                                        {option.label}
+                                    </StyledDropdownListItem>
+                                )
+                            })}
+                        </StyledDropdownList>
+                    </StyledDropdownBody>
+                </StyledDropdown>
+            )}
         </div>
     )
 }
