@@ -7,10 +7,11 @@ import { ExploreContext } from 'app/contexts/explore'
 import { FiltersContext } from 'app/contexts/filters'
 import { ADD_REPOSITORIES } from 'app/constants/actionTypes'
 
+// Explore Page
 const Explore: React.FC = () => {
     const { dispatch } = React.useContext(ExploreContext)
     const { state } = React.useContext(FiltersContext)
-
+    // fetch repositories
     const [treding, tredingResponse] = useLazyQuery(api.trending)
 
     React.useEffect(() => {
@@ -27,6 +28,7 @@ const Explore: React.FC = () => {
 
     React.useEffect(() => {
         if (tredingResponse.data) {
+            // Set repositories to context
             dispatch({
                 type: ADD_REPOSITORIES,
                 repositories: tredingResponse.data.trending,

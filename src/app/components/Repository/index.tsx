@@ -18,6 +18,7 @@ export interface Props {
     contributors: ContributorType[]
 }
 
+// Respository item of explorer page
 const Repository: React.FC<Props> = props => {
     return (
         <StyledRepository className='p-4'>

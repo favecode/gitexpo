@@ -17,9 +17,13 @@ pages: pages of sites<br />
 public: Images and gifs and static files<br />
 reducers: Reducers for Context API<br />
 
+## Structures
+
+Main file address: `app/index.tsx`
+
 ## How to Use:
 
-### `yarn start`
+### `yarn install && yarn start`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.

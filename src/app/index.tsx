@@ -7,6 +7,7 @@ import routes, { RouteType } from './routes'
 import apollo from 'app/apollo'
 import ContextProvider from 'app/contexts'
 
+// Main component
 const App: React.FC = () => {
     return (
         <ContextProvider>

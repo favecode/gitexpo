@@ -19,14 +19,14 @@ import SelectBox from 'app/components/SelectBox'
 import { EDIT_FILTERS, CLEAR_REPOSITORIES } from 'app/constants/actionTypes'
 
 export interface Props {
-    id: string
-    label: string
-    defaultLabel: string
-    title: string
-    options: OptionType[]
-    selectedOptions: string[]
-    select: boolean
-    selectPlaceHolder: string
+    id: string // for indentify filters
+    label: string // label for Dropdown
+    defaultLabel: string // for unselected filter
+    title: string // header title for Dropdown
+    options: OptionType[] // values for filter
+    selectedOptions: string[] // selected items of filter
+    select: boolean // use SelectBox component of not
+    selectPlaceHolder: string // placeholder for input of SelectBox
 }
 
 const Dropdown: React.FC<Props> = props => {
@@ -35,6 +35,7 @@ const Dropdown: React.FC<Props> = props => {
     const [visible, setVisible] = React.useState<boolean>(false)
     const [options] = React.useState<OptionType[]>(props.options)
 
+    // for showing or hiding Dropdown
     const handleVisibleToggle: () => void = () =>
         setVisible((prevState: boolean) => !prevState)
 
@@ -48,6 +49,7 @@ const Dropdown: React.FC<Props> = props => {
 
     const handleChangeFilters = (option: OptionType) => {
         if (props.id === 'since') {
+            // Set new since filter
             dispatch({
                 type: EDIT_FILTERS,
                 data: {
@@ -55,6 +57,7 @@ const Dropdown: React.FC<Props> = props => {
                 },
             })
         }
+        // Clear stored repositories
         exploreDispatch({
             type: CLEAR_REPOSITORIES,
         })
@@ -62,6 +65,7 @@ const Dropdown: React.FC<Props> = props => {
 
     return (
         <div className='py-3 pr-4 relative'>
+            {/* Label of Dropdown */}
             <StyledDropdownLabel
                 onClick={handleVisibleToggle}
                 className='cursor-pointer'>
@@ -102,6 +106,7 @@ const Dropdown: React.FC<Props> = props => {
                                     option.value,
                                 )
                                 return isSelected.length > 0 ? (
+                                    // Selected Items
                                     <StyledDropdownSelectedListItem
                                         color='#24292e'
                                         className='cursor-pointer flex item-center font-bold'
@@ -114,6 +119,7 @@ const Dropdown: React.FC<Props> = props => {
                                         {option.label}
                                     </StyledDropdownSelectedListItem>
                                 ) : (
+                                    // Unselected Items
                                     <StyledDropdownListItem
                                         onClick={() =>
                                             handleChangeFilters(option)

@@ -1,5 +1,6 @@
 import gql from 'graphql-tag'
 
+// Treding query to fetching repositories
 const trending = gql`
     query trending(
         $languages: [String]

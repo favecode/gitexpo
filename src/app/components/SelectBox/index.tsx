@@ -6,7 +6,7 @@ import Select, { components } from 'react-select'
 import { EDIT_FILTERS, CLEAR_REPOSITORIES } from 'app/constants/actionTypes'
 import { Props } from 'app/components/Dropdown'
 
-const Dropdown: React.FC<Props> = props => {
+const SelectBox: React.FC<Props> = props => {
     const { state: filters, dispatch } = React.useContext(FiltersContext)
     const { dispatch: exploreDispatch } = React.useContext(ExploreContext)
     const [options] = React.useState<OptionType[]>(props.options)
@@ -18,7 +18,7 @@ const Dropdown: React.FC<Props> = props => {
                 options.map((option: OptionType) => {
                     languages.push(option.value)
                 })
-
+                // Set new languages filter
                 dispatch({
                     type: EDIT_FILTERS,
                     data: {
@@ -26,6 +26,7 @@ const Dropdown: React.FC<Props> = props => {
                     },
                 })
             } else {
+                // Clear languages filter
                 dispatch({
                     type: EDIT_FILTERS,
                     data: {
@@ -37,6 +38,7 @@ const Dropdown: React.FC<Props> = props => {
 
         if (props.id === 'spokenLanguage') {
             if (options) {
+                // Set new spokenLanguage filter
                 dispatch({
                     type: EDIT_FILTERS,
                     data: {
@@ -44,6 +46,7 @@ const Dropdown: React.FC<Props> = props => {
                     },
                 })
             } else {
+                // Clear spokenLanguage filter
                 dispatch({
                     type: EDIT_FILTERS,
                     data: {
@@ -57,6 +60,8 @@ const Dropdown: React.FC<Props> = props => {
             type: CLEAR_REPOSITORIES,
         })
     }
+
+    // Custom Components for react-select
 
     const CustomControl = (propsComponent: any) => {
         return (
@@ -102,7 +107,7 @@ const Dropdown: React.FC<Props> = props => {
                     if (filters.languages.includes(option.value)) {
                         return option
                     }
-                } else {
+                } else if (props.id === 'spokenLanguage') {
                     if (filters.spokenLanguage.includes(option.value)) {
                         return option
                     }
@@ -118,4 +123,4 @@ const Dropdown: React.FC<Props> = props => {
     )
 }
 
-export default Dropdown
+export default SelectBox

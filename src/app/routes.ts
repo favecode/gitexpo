@@ -6,6 +6,7 @@ export interface RouteType {
     component: React.ComponentType
 }
 
+// Routes of page
 const routes: RouteType[] = [
     {
         exact: true,

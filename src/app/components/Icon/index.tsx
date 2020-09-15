@@ -13,7 +13,7 @@ export interface Props {
     margin?: string
     display?: string
 }
-
+// Get icon name and create ReactSVG componet
 const Icon: React.FC<Props> = props => {
     return (
         <ReactSVG
@@ -33,6 +33,7 @@ const Icon: React.FC<Props> = props => {
     )
 }
 
+// Get icon name and return svg file address
 const switchIcon: (icon: string) => string | undefined = icon => {
     switch (icon) {
         case 'Fork':
